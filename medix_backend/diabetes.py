@@ -5,15 +5,15 @@ import joblib
 import mysql.connector
 from werkzeug.security import generate_password_hash, check_password_hash
 
-# Initialize Flask app
+
 app = Flask(__name__)
 CORS(app)
 
-# Load the scaler and model
+
 model = joblib.load('diabetes_data/model.pkl')
 scaler = joblib.load('diabetes_data/scaler.pkl')
 
-# Configure MySQL connection
+
 db_config = {
     'host': 'localhost',
     'user': 'root',
@@ -28,10 +28,9 @@ def predict_diabetes():
         if not data:
             return jsonify({'error': 'No data provided'}), 400
 
-        # Convert data to DataFrame
         df = pd.DataFrame([data])
 
-        # Map categorical and boolean variables
+        
         mappings = {
             'gender': {'male': 0, 'female': 1, 'other': 2},
             'smoking_history': {
@@ -41,14 +40,14 @@ def predict_diabetes():
         }
         df.replace(mappings, inplace=True)
 
-        # Select and scale features
+       
         features = df[['gender', 'age', 'hypertension', 'heart_disease',
                        'smoking_history', 'bmi', 'HbA1c_level', 'blood_glucose_level']]
         features_scaled = scaler.transform(features)
 
-        # Predict and get probability
+       
         prediction = model.predict(features_scaled)
-        probability = model.predict_proba(features_scaled)[:, 1]  # Probability of being diabetic
+        probability = model.predict_proba(features_scaled)[:, 1] 
 
         return jsonify({'prediction': int(prediction[0]), 'probability': float(probability[0])})
 
@@ -58,10 +57,10 @@ def predict_diabetes():
 @app.route('/register', methods=['POST'])
 def register():
     try:
-        # Parse request data
+        
         data = request.get_json()
 
-        # Required fields
+        
         username = data.get('username')
         password = data.get('password')
         gender = data.get('gender')
@@ -69,7 +68,7 @@ def register():
         height = data.get('height')
         weight = data.get('weight')
 
-        # Optional fields
+       
         high_blood_pressure = data.get('high_blood_pressure')
         low_blood_pressure = data.get('low_blood_pressure')
         cholesterol = data.get('cholesterol')
@@ -78,20 +77,20 @@ def register():
         alcohol_intake = data.get('alcohol_intake')
         physical_activity = data.get('physical_activity')
 
-        # Validate required fields
+        
         if not username or not password:
             return jsonify({'error': 'Username and password are required'}), 400
         if not gender or not age or not height or not weight:
             return jsonify({'error': 'Gender, age, height, and weight are required'}), 400
 
-        # Hash the password
+       
         hashed_password = generate_password_hash(password)
 
-        # Connect to the database
+       
         conn = mysql.connector.connect(**db_config)
         cursor = conn.cursor()
 
-        # Insert query with all fields
+       
         query = """
             INSERT INTO users (
                 username, password, gender, age, height, weight, high_blood_pressure, 
@@ -105,7 +104,7 @@ def register():
             smoking_history, alcohol_intake, physical_activity
         )
 
-        # Execute query and commit
+        
         cursor.execute(query, values)
         conn.commit()
 

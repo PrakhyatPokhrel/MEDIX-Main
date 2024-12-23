@@ -4,6 +4,8 @@ from flask_cors import CORS
 import numpy as np
 import pandas as pd
 import pickle
+import random
+
 
 app = Flask(__name__)
 CORS(app)
