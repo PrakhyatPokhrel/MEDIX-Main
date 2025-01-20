@@ -1,6 +1,7 @@
 import React from "react";
-import { Menu } from "antd";
+import { Button, Menu } from "antd";
 import { RetweetOutlined } from "@ant-design/icons";
+import ProfileDropdown from "./ProfileComponent";
 import { useNavigate } from "react-router-dom"; // Use useNavigate instead of useHistory
 
 const menuStyle = {
@@ -12,6 +13,8 @@ const menuStyle = {
 
 const Header = () => {
   const navigate = useNavigate(); // Initialize useNavigate hook
+  const username = localStorage.getItem("username");
+  var profile = username != null;
 
   const handleMenuClick = (e) => {
     // Function to handle menu click using navigate
@@ -23,7 +26,10 @@ const Header = () => {
         navigate("/info"); // Navigate to FAQ page
         break;
       case "about":
-        navigate("/Test"); // Navigate to About Us page
+        // navigate("/Test"); // Navigate to About Us page
+        break;
+      case "login":
+        profile ? navigate("/profile") : navigate("/login"); // Navigate to About Us page
         break;
       default:
         break;
@@ -56,7 +62,9 @@ const Header = () => {
           Home
         </Menu.Item>
         <Menu.Item key="info">Info</Menu.Item>
-        <Menu.Item key="about">About Us</Menu.Item>
+        {/* <Menu.Item key="about">About Us</Menu.Item> */}
+
+        <Menu.Item key="login">{profile ? "Profile" : "Login"}</Menu.Item>
       </Menu>
     </header>
   );
