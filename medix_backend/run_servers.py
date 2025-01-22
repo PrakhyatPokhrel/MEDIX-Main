@@ -8,9 +8,9 @@ def run_server(script_path, port):
     return process
 
 if __name__ == '__main__':
-    base_py_path = '/Users/prakhyatpokhrel/Documents/personal/python/MEDIX-MAIN/medix_backend/base.py'
-    heart_model_server_path = '/Users/prakhyatpokhrel/Documents/personal/python/MEDIX-MAIN/medix_backend/heart_model_server.py'
-    diabetes_py_path = '/Users/prakhyatpokhrel/Documents/personal/python/MEDIX-MAIN/medix_backend/diabetes.py'
+    base_py_path = r'C:\medix\MEDIX-Main\medix_backend\base.py'
+    heart_model_server_path = r'C:\medix\MEDIX-Main\medix_backend\heart_model_server.py'
+    diabetes_py_path = r'C:\medix\MEDIX-Main\medix_backend\diabetes.py'
 
     base_process = run_server(base_py_path, 5000)
     heart_process = run_server(heart_model_server_path, 5001)

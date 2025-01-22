@@ -7,7 +7,7 @@ app = Flask(__name__)
 CORS(app)
 
 # Load the logistic regression model and scaler
-with open('Heart_data/heart_model.pkl', 'rb') as model_file, open('Heart_data/heart_scaler.pkl', 'rb') as scaler_file:
+with open(r'C:\Users\ASUS\Documents\Downloads\Downloads\heart_model.pkl', 'rb') as model_file, open(r'C:\Users\ASUS\Documents\Downloads\Downloads\heart_scaler.pkl', 'rb') as scaler_file:
     model = pickle.load(model_file)
     scaler = pickle.load(scaler_file)
 

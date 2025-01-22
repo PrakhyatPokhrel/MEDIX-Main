@@ -10,8 +10,8 @@ app = Flask(__name__)
 CORS(app)
 
 
-model = joblib.load('diabetes_data/model.pkl')
-scaler = joblib.load('diabetes_data/scaler.pkl')
+model = joblib.load(r'C:\Users\ASUS\Documents\Downloads\Downloads\model.pkl')
+scaler = joblib.load(r'C:\Users\ASUS\Documents\Downloads\Downloads\scaler.pkl')
 
 
 db_config = {

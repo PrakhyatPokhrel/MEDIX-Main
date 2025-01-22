@@ -11,7 +11,7 @@ app = Flask(__name__)
 CORS(app)
 
 # Load the model and scaler
-with open('diabetes_model.pkl', 'rb') as model_file, open('diabetes_scaler.pkl', 'rb') as scaler_file:
+with open(r'C:\Users\ASUS\Documents\Downloads\Downloads\diabetes_model.pkl', 'rb') as model_file, open(r'C:\Users\ASUS\Documents\Downloads\Downloads\diabetes_scaler.pkl', 'rb') as scaler_file:
     model = pickle.load(model_file)
     scaler = pickle.load(scaler_file)
 
