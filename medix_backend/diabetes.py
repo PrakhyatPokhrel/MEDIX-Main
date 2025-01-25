@@ -67,8 +67,6 @@ def register():
         age = data.get('age')
         height = data.get('height')
         weight = data.get('weight')
-
-       
         high_blood_pressure = data.get('high_blood_pressure')
         low_blood_pressure = data.get('low_blood_pressure')
         cholesterol = data.get('cholesterol')
@@ -116,13 +114,6 @@ def register():
     except Exception as e:
         return jsonify({'error': f"An error occurred: {str(e)}"}), 500
 
-    finally:
-        if 'cursor' in locals() and cursor:
-            cursor.close()
-        if 'conn' in locals() and conn:
-            conn.close()
-
-
 @app.route('/login', methods=['POST'])
 def login():
     try:
@@ -150,12 +141,6 @@ def login():
 
     except Exception as e:
         return jsonify({'error': f"An error occurred: {str(e)}"}), 500
-
-    finally:
-        if 'cursor' in locals():
-            cursor.close()
-        if 'conn' in locals():
-            conn.close()
 
 
 @app.route('/test', methods=['GET'])

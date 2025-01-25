@@ -130,13 +130,13 @@ const RegisterForm = ({ onRegisterSuccess }) => {
           <Col span={12}>
             <Form.Item
               name="height"
-              label="Height (in meters)"
+              label="Height (in centimeters)"
               rules={[{ required: true, message: "Please input your height!" }]}
             >
               <InputNumber
-                min={0.5}
-                max={2.5}
-                step={0.01}
+                min={50}
+                max={250}
+                step={1}
                 placeholder="Height in meters"
                 style={{ width: "100%" }}
               />
@@ -185,27 +185,43 @@ const RegisterForm = ({ onRegisterSuccess }) => {
 
         {/* Additional Fields */}
         <Row gutter={16}>
-          <Col span={12}>
-            <Form.Item name="cholesterol" label="Cholesterol">
-              <InputNumber
-                min={50}
-                max={500}
-                placeholder="Cholesterol Level"
-                style={{ width: "100%" }}
-              />
-            </Form.Item>
-          </Col>
-          <Col span={12}>
-            <Form.Item name="glucose" label="Glucose">
-              <InputNumber
-                min={50}
-                max={500}
-                placeholder="Glucose Level"
-                style={{ width: "100%" }}
-              />
-            </Form.Item>
-          </Col>
-        </Row>
+  <Col span={12}>
+    <Form.Item
+      name="cholesterol"
+      label="Cholesterol"
+      rules={[
+        {
+          message: "Please input your cholesterol level!",
+        },
+      ]}
+    >
+      <InputNumber
+        min={1}
+        max={3}
+        style={{ width: "100%" }}
+        placeholder="1: normal, 2: above normal, 3: well above normal"
+      />
+    </Form.Item>
+  </Col>
+  <Col span={12}>
+    <Form.Item
+      name="glucose"
+      label="Glucose"
+      rules={[
+        {
+          message: "Please input your glucose level!",
+        },
+      ]}
+    >
+      <InputNumber
+        min={1}
+        max={3}
+        style={{ width: "100%" }}
+        placeholder="1: normal, 2: above normal, 3: well above normal"
+      />
+    </Form.Item>
+  </Col>
+</Row>
 
         <Row gutter={16}>
           <Col span={12}>
@@ -220,8 +236,8 @@ const RegisterForm = ({ onRegisterSuccess }) => {
           <Col span={12}>
             <Form.Item name="alcohol_intake" label="Alcohol Intake">
               <Select placeholder="Select Alcohol Intake">
-                <Option value={0}>None</Option>
-                <Option value={1}>High</Option>
+                <Option value={0}>No</Option>
+                <Option value={1}>Yes</Option>
               </Select>
             </Form.Item>
           </Col>
@@ -231,7 +247,7 @@ const RegisterForm = ({ onRegisterSuccess }) => {
           <Col span={12}>
             <Form.Item name="physical_activity" label="Physical Activity">
               <Select placeholder="Select Physical Activity">
-                <Option value={0}>Sedentary</Option>
+                <Option value={0}>Inactive</Option>
                 <Option value={1}>Active</Option>
               </Select>
             </Form.Item>
@@ -252,8 +268,8 @@ const RegisterForm = ({ onRegisterSuccess }) => {
           <Col span={12}>
             <Form.Item name="hemoglobin_level" label="Hemoglobin Level">
               <InputNumber
-                min={5}
-                max={20}
+                min={4.5}
+                max={9}
                 placeholder="Hemoglobin Level"
                 style={{ width: "100%" }}
               />

@@ -76,7 +76,7 @@ const DiabetesPredictionForm = ({ setCurrentView }) => {
             <Form.Item
               name="gender"
               label="Gender"
-              initialValue="male"
+              // initialValue="male"
               rules={[
                 { required: true, message: "Please select your gender!" },
               ]}
@@ -92,7 +92,7 @@ const DiabetesPredictionForm = ({ setCurrentView }) => {
             <Form.Item
               name="age"
               label="Age"
-              initialValue={userData.age}
+              // initialValue={userData.age}
               rules={[
                 { required: true, message: "Please input your age!" },
                 {
@@ -115,7 +115,7 @@ const DiabetesPredictionForm = ({ setCurrentView }) => {
             <Form.Item
               name="hypertension"
               label="Hypertension"
-              initialValue={userData.hypertension}
+              // initialValue={userData.hypertension}
               rules={[
                 {
                   required: true,
@@ -133,7 +133,7 @@ const DiabetesPredictionForm = ({ setCurrentView }) => {
             <Form.Item
               name="heart_disease"
               label="Heart Disease"
-              initialValue={userData.heart_disease}
+              // initialValue={userData.heart_disease}
               rules={[
                 {
                   required: true,
@@ -151,7 +151,7 @@ const DiabetesPredictionForm = ({ setCurrentView }) => {
             <Form.Item
               name="smoking_history"
               label="Smoking History"
-              initialValue={"never"}
+              // initialValue={"never"}
               rules={[
                 {
                   required: true,
@@ -159,13 +159,10 @@ const DiabetesPredictionForm = ({ setCurrentView }) => {
                 },
               ]}
             >
-              <Select placeholder="Select your smoking history">
-                <Option value="No Info">No Info</Option>
+              <Select placeholder="Select your smoking history">         
                 <Option value="current">Current</Option>
                 <Option value="never">Never</Option>
                 <Option value="former">Former</Option>
-                <Option value="not current">Not Current</Option>
-                <Option value="ever">Ever</Option>
               </Select>
             </Form.Item>
           </Col>
@@ -173,7 +170,7 @@ const DiabetesPredictionForm = ({ setCurrentView }) => {
             <Form.Item
               name="bmi"
               label="BMI (Body Mass Index)"
-              initialValue={calculateBMI(userData.height, userData.weight)}
+              // initialValue={calculateBMI(userData.height, userData.weight)}
               rules={[
                 { required: true, message: "Please input your BMI!" },
                 {
@@ -196,7 +193,7 @@ const DiabetesPredictionForm = ({ setCurrentView }) => {
             <Form.Item
               name="HbA1c_level"
               label="HbA1c Level (Hemoglobin level)"
-              initialValue={userData.hemoglobin_level}
+              // initialValue={userData.hemoglobin_level}
               rules={[
                 { required: true, message: "Please input your HbA1c level!" },
                 {
@@ -220,7 +217,7 @@ const DiabetesPredictionForm = ({ setCurrentView }) => {
             <Form.Item
               name="blood_glucose_level"
               label="Blood Glucose Level"
-              initialValue={userData.glucose}
+              // initialValue={userData.glucose}
               rules={[
                 {
                   required: true,
